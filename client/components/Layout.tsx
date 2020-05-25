@@ -1,40 +1,33 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Flex, Box } from 'rebass'
+import { Box, Grommet, Heading } from 'grommet'
 import Link from 'next/link'
 
 import { Sidebar } from './Sidebar'
 
-const Header = styled.h1`
-  padding: 15px;
+const Header = styled(Heading)`
   a {
     color: black;
     text-decoration: none;
   }
 `
 
-const Main = styled(Box)`
-  padding: 15px;
-`
-
 export const Layout = ({children}) => {
   return (
-    <>
-      <Header>
+    <Grommet>
+      <Header level={2}>
         <Link href='/'>
           Digitoo monitoring service
         </Link>
       </Header>
-      <Flex>
-        <Box>
-          <Sidebar />
-        </Box>
-        <Main>
+      <Box direction="row" flex="grow">
+        <Sidebar />
+        <Box pad="small">
           {children}
-        </Main>
-      </Flex>
-    </>
+        </Box>
+      </Box>
+    </Grommet>
   )
 }
 

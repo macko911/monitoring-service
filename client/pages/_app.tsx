@@ -2,7 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import '../styles.css'
 
-import {Layout} from '../components'
+import { Layout } from '../components'
 
 // eslint-disable-next-line react/prop-types
 export default function App({Component, pageProps}) {

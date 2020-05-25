@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Box } from 'grommet'
 
-const Wrap = styled.div`
-  padding: 15px;
+const Wrap = styled(Box)`
   min-width: 300px;
 `
 
 export const Sidebar = () => {
   return (
-    <Wrap>
+    <Wrap pad="small">
       Sidebar
     </Wrap>
   )
