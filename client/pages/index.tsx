@@ -4,7 +4,7 @@ import Link from 'next/link'
 const IndexPage = () => {
   return (
     <div>
-      Welcome! Please <Link href='/login'>login</Link> first...
+      Welcome! Please <Link href='/login'><a>login</a></Link> first...
     </div>
   )
 }

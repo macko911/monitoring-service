@@ -18,7 +18,9 @@ export const Layout = ({children}) => {
     <Grommet>
       <Header level={2}>
         <Link href='/'>
-          Digitoo monitoring service
+          <a>
+            Digitoo monitoring service
+          </a>
         </Link>
       </Header>
       <Box direction="row" flex="grow">

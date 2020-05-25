@@ -20,7 +20,7 @@ const router = express.Router()
 
 router
   .get('/', indexPage)
-  .post('/authenticate', authenticate)
+  .post('/login', authenticate)
   .use('/results', authMiddleware, router
     .get('/list', listResults)
     .delete('/', clearResults)
