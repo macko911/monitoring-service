@@ -38,6 +38,6 @@ export const addMonitor: Handler = Router().use(
       )
     )
 
-    res.status(204).send()
+    res.send(data.id)
   })
 )

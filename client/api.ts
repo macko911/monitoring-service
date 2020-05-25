@@ -55,3 +55,19 @@ export async function saveMonitor (data) {
     },
   })
 }
+
+export async function createMonitor ({
+  url,
+  name,
+  monitoredIntervalSeconds,
+}) {
+  return request({
+    url: '/monitor',
+    method: 'post',
+    data: {
+      url,
+      name,
+      monitoredIntervalSeconds,
+    },
+  })
+}
