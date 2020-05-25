@@ -3,13 +3,15 @@ import styled from 'styled-components'
 import { Box } from 'grommet'
 
 const Wrap = styled(Box)`
-  min-width: 300px;
+  width: 300px;
 `
 
-export const Sidebar = () => {
+const Sidebar = () => {
   return (
     <Wrap pad="small">
       Sidebar
     </Wrap>
   )
 }
+
+export default Sidebar

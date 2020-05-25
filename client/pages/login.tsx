@@ -1,4 +1,7 @@
 import React, { FormEvent } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { useRouter } from 'next/router'
 import {
   TextInput,
   Button,
@@ -6,23 +9,27 @@ import {
   Box,
   Paragraph,
 } from 'grommet'
-import * as api from '../api'
-import { useRouter } from 'next/router'
 
-const LoginPage = () => {
+import * as api from '../api'
+import { authLogin, authLogout } from '../store/actions'
+import { isLoggedIn } from '../store/selectors'
+import { State } from '../store/reducers'
+
+const LoginPage = ({
+  dispatch,
+  loggedIn,
+}) => {
   const [username, setUsername] = React.useState('')
   const [password, setPassword] = React.useState('')
   const [isFetching, setFetching] = React.useState(false)
-  const [accessToken, setAccessToken] = React.useState(null)
   const [error, setError] = React.useState(null)
   const { push } = useRouter()
 
-  console.log({accessToken})
   async function login () {
     setFetching(true)
     try {
       const res = await api.login(username, password)
-      setAccessToken(res.data)
+      dispatch(authLogin(res.data))
       setError(null)
       push('/')
     } catch (err) {
@@ -36,6 +43,15 @@ const LoginPage = () => {
   function handlePassword (e: FormEvent) {
     setPassword(e.currentTarget.value)
   }
+
+  if (loggedIn) {
+    return (
+      <Paragraph>
+        You are already logged in...
+      </Paragraph>
+    )
+  }
+
   return (
     <div>
       <Paragraph >
@@ -79,4 +95,13 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage
+LoginPage.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  loggedIn: PropTypes.bool.isRequired,
+}
+
+const mapStateToProps = (state: State) => ({
+  loggedIn: isLoggedIn(state),
+})
+
+export default connect(mapStateToProps)(LoginPage)
