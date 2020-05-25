@@ -5,7 +5,7 @@
   "author": "Matej Vobornik <vobornik.matej@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon --exec 'ts-node' src/app.ts"
+    "dev:server": "nodemon --exec 'ts-node' server/app.ts"
   },
   "devDependencies": {
     "@types/basic-auth": "^1.1.3",
