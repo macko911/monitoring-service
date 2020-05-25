@@ -30,6 +30,16 @@ We use `concurrently` package to run multiple npm scripts at the same time, ensu
 
 ## Usage
 
+### Environmental variables
+
+Before running the app, we need to create a `.env` file in the `/server` folder which will store our secrets. Simply rename the `.env.default` file to `.env` and fill in the empty values.
+```
+FAUNA_DB_SECRET=
+JWT_SECRET=
+```
+
+### Authentication
+
 In order to test the app, we first need to get an accessToken via the `/login` endpoint.
 
 #### Test users
