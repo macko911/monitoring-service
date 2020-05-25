@@ -36,7 +36,7 @@ export const getMonitor: Handler = Router().use(
       res
         .status(404)
         .send({
-          msg: `Failed to fetch monitor with id ${id}. ${err.message}`
+          msg: `Failed to fetch monitor with id ${id}. ${err.message}`,
         })
       return
     }

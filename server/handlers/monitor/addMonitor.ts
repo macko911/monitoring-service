@@ -1,7 +1,7 @@
 import { Router, Handler } from 'express'
 import { v4 } from 'uuid'
 
-import { q, client } from "../../utils/db"
+import { q, client } from '../../utils/db'
 import { asyncMiddleware, validationMiddleware } from '../../middleware'
 import { MonitoredEndpoint } from '../../models'
 import {

@@ -1,6 +1,6 @@
-import { Expr } from 'faunadb';
-import { client, q } from "./db";
-import { MonitoringResult } from '../models';
+import { Expr } from 'faunadb'
+import { client, q } from './db'
+import { MonitoringResult } from '../models'
 
 type QueryObject = {
   data: MonitoringResult;

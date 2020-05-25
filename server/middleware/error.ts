@@ -5,9 +5,9 @@ import { ErrorRequestHandler } from 'express'
  */
 export const errorMiddleware: ErrorRequestHandler = (err, req, res, next) => {
   console.error(err)
-  let msg = process.env.NODE_ENV === 'production'
-   ? 'Something wrong happened'
-   : err.message
+  const msg = process.env.NODE_ENV === 'production'
+    ? 'Something wrong happened'
+    : err.message
 
   res
     .status(500)

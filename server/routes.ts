@@ -14,7 +14,7 @@ import {
   listResults,
 } from './handlers'
 
-import { authMiddleware } from "./middleware"
+import { authMiddleware } from './middleware'
 
 const router = express.Router()
 

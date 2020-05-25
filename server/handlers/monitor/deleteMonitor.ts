@@ -17,7 +17,7 @@ export const deleteMonitor: Handler = Router().use(
       res
         .status(500)
         .send({
-          msg: `Failed to delete monitor with id ${req.query.id}: ${err.messsage}`
+          msg: `Failed to delete monitor with id ${req.query.id}: ${err.messsage}`,
         })
     }
   })

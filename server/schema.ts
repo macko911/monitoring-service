@@ -9,11 +9,11 @@ export const MonitoredEndpointBaseSchema = object().shape({
 })
 
 export const MonitoredEndpointComputedSchema = object().shape({
-    id: string().required(),
-    dateCreated: date().required(),
-    dateModified: date().required(),
-    owner: string().required(),
-  })
+  id: string().required(),
+  dateCreated: date().required(),
+  dateModified: date().required(),
+  owner: string().required(),
+})
 
 export const MonitoredEndpointSchema = MonitoredEndpointBaseSchema.concat(
   MonitoredEndpointComputedSchema,
@@ -29,5 +29,5 @@ export const MonitoringResultSchema = object().shape({
   id: string().required(),
   endpointId: string().required(),
   dateCreated: date().required(),
-  response: ResponseSchema.required()
+  response: ResponseSchema.required(),
 })

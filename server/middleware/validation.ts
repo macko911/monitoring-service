@@ -1,6 +1,6 @@
-import { Handler } from 'express';
-import { asyncMiddleware } from './async';
-import { Schema, ValidationError } from 'yup';
+import { Handler } from 'express'
+import { asyncMiddleware } from './async'
+import { Schema, ValidationError } from 'yup'
 
 export const validationMiddleware = (querySchema?: Schema<object>, bodySchema?: Schema<object>): Handler =>
   asyncMiddleware(async (req, res, next) => {

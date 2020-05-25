@@ -1,6 +1,6 @@
 import { Router, Handler } from 'express'
 
-import { q, client } from "../../utils/db"
+import { q, client } from '../../utils/db'
 import { asyncMiddleware } from '../../middleware'
 import { MonitoredEndpoint } from '../../models'
 import { MonitoredEndpointSchema } from '../../schema'

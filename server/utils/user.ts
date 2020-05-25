@@ -1,4 +1,4 @@
-import { client, q } from "./db"
+import { client, q } from './db'
 import { User } from '../models'
 
 type UserResponse = {
