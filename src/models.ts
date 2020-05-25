@@ -16,18 +16,19 @@ export interface MonitoredEndpoint {
   url: string;
   dateCreated: Date | string;
   dateModified: Date | string;
-  monitoredInterval: number;
+  monitoredIntervalSeconds: number;
   owner: UserId;
 }
 
 export interface MonitoringResult {
-  id: number;
+  id: string;
   endpointId: MonitoredEndpointId;
-  dateCreated: Date;
+  dateCreated: Date | string;
   response: Response;
 }
 
 export type Response = {
   statusCode: number;
-  payload: any;
+  contentType: string;
+  payload: ArrayBuffer;
 }

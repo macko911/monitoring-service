@@ -4,6 +4,7 @@ import bodyParser from 'body-parser'
 
 import routes from './routes'
 import { errorMiddleware } from './middleware'
+import { checkEndpoints } from './utils/checkEndpoints'
 
 const app = express()
 
@@ -14,5 +15,11 @@ app.use(routes)
 app.use(errorMiddleware)
 
 app.listen(8080, () => {
+  checkEndpoints()
   console.log('App listening at http://localhost:8080')
+})
+
+process.on('unhandledRejection', (err) => {
+  console.error(err)
+  process.exit(1)
 })

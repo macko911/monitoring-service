@@ -3,3 +3,9 @@ export { authenticate } from './authenticate'
 
 export { addMonitor } from './monitor/addMonitor'
 export { listMonitors } from './monitor/listMonitors'
+export { sendMonitor } from './monitor/sendMonitor'
+export { deleteMonitor } from './monitor/deleteMonitor'
+export { editMonitor } from './monitor/editMonitor'
+
+export { clearResults } from './results/clearResults'
+export { listResults } from './results/listResults'

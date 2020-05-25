@@ -1,9 +1,11 @@
 import { string, object, number, date } from 'yup'
 
+export const MINIMAL_INTERVAL_SECONDS = 10
+
 export const MonitoredEndpointBaseSchema = object().shape({
   name: string().required(),
   url: string().required(),
-  monitoredInterval: number().min(10).required(),
+  monitoredIntervalSeconds: number().min(MINIMAL_INTERVAL_SECONDS).required(),
 })
 
 export const MonitoredEndpointComputedSchema = object().shape({
@@ -16,3 +18,16 @@ export const MonitoredEndpointComputedSchema = object().shape({
 export const MonitoredEndpointSchema = MonitoredEndpointBaseSchema.concat(
   MonitoredEndpointComputedSchema,
 )
+
+const ResponseSchema = object().shape({
+  statusCode: number().required(),
+  contentType: string().required(),
+  payload: object().nullable().default(null),
+})
+
+export const MonitoringResultSchema = object().shape({
+  id: string().required(),
+  endpointId: string().required(),
+  dateCreated: date().required(),
+  response: ResponseSchema.required()
+})

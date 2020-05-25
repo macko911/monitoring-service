@@ -1,4 +1,3 @@
-import { object, string, number } from 'yup'
 import { Router, Handler } from 'express'
 import { v4 } from 'uuid'
 
@@ -17,13 +16,13 @@ export const addMonitor: Handler = Router().use(
     const {
       name,
       url,
-      monitoredInterval,
+      monitoredIntervalSeconds,
     } = req.body
   
     const data: MonitoredEndpoint = {
       name,
       url,
-      monitoredInterval,
+      monitoredIntervalSeconds,
       id: v4(),
       dateCreated: new Date().toISOString(),
       dateModified: new Date().toISOString(),
