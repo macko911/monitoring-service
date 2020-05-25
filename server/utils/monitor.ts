@@ -46,11 +46,11 @@ export async function listMonitorsByOwner (owner: string) {
   return result.data.map((monitor) => monitor.data)
 }
 
-export async function saveMonitoringResult (endpointId: string, response: Response) {
+export async function saveMonitoringResult (monitorId: string, response: Response) {
   const data: MonitoringResult = {
     id: v4(),
     dateCreated: new Date().toISOString(),
-    endpointId,
+    monitorId,
     response,
   }
   await validateSchema(MonitoringResultSchema, data)

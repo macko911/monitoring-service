@@ -30,18 +30,19 @@ async function checkEndpoint (monitor: MonitoredEndpoint) {
     url,
     name,
   } = monitor
-  console.log(`Checking endpoint ${name} with url: ${url}`)
+  console.log(`Checking endpoint ${name}, url: ${url}`)
   const res = await fetch(url)
   const response: Response = {
     statusCode: res.status,
     contentType: res.headers.get('content-type'),
-    payload: await res.arrayBuffer(),
+    payload: await res.text(),
   }
   await saveMonitoringResult(id, response)
 }
 
 export const checkEndpoints = async () => {
   return
+  console.log('Start monitoring urls...')
   // fetch all monitored endpoints
   const allMonitors = await listAllMonitors()
   if (!allMonitors.length) {

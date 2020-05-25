@@ -89,7 +89,7 @@ const LoginPage = ({
       <Button
         primary
         disabled={isFetching || (!username || !password)}
-        label={isFetching ? '...' : 'Login'}
+        label="Login"
         onClick={login}
       />
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
+import Router from 'next/router'
 import { connect } from 'react-redux'
 import { Button } from 'grommet'
 
@@ -12,6 +13,10 @@ const LoginButton = ({
   dispatch,
   loggedIn,
 }) => {
+  function logout () {
+    dispatch(authLogout())
+    Router.push('/')
+  }
   if (!loggedIn) {
     return (
       <Link href='/login'>
@@ -22,7 +27,7 @@ const LoginButton = ({
   return (
     <Button
       label="Logout"
-      onClick={() => dispatch(authLogout())}
+      onClick={logout}
     />
   )
 }

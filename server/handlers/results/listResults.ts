@@ -1,8 +1,18 @@
-import { Handler } from 'express'
-import { listAllResults } from '../../utils/results'
-import { asyncMiddleware } from '../../middleware'
+import { object, string } from 'yup'
+import { Router } from 'express'
 
-export const listResults: Handler = asyncMiddleware(async (req, res) => {
-  const results = await listAllResults()
-  res.send(results)
+import { listResultsByMonitorId } from '../../utils/results'
+import { asyncMiddleware, validationMiddleware } from '../../middleware'
+
+const querySchema = object().shape({
+  monitorId: string().required(),
 })
+
+export const listResults = Router().use(
+  validationMiddleware(querySchema),
+  asyncMiddleware(async (req, res) => {
+    const monitorId = req.query.monitorId as string
+    const results = await listResultsByMonitorId(monitorId)
+    res.send(results)
+  })
+)

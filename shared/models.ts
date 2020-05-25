@@ -22,7 +22,7 @@ export interface MonitoredEndpoint {
 
 export interface MonitoringResult {
   id: string;
-  endpointId: MonitoredEndpointId;
+  monitorId: MonitoredEndpointId;
   dateCreated: Date | string;
   response: Response;
 }
@@ -30,5 +30,5 @@ export interface MonitoringResult {
 export type Response = {
   statusCode: number;
   contentType: string;
-  payload: ArrayBuffer;
+  payload: string;
 }

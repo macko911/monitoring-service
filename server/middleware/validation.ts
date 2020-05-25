@@ -4,18 +4,18 @@ import { Schema, ValidationError } from 'yup'
 
 export const validationMiddleware = (querySchema?: Schema<object>, bodySchema?: Schema<object>): Handler =>
   asyncMiddleware(async (req, res, next) => {
-    function badRequest (err: ValidationError) {
+    function badRequest (type: 'Query' | 'Body', err: ValidationError) {
       res
         .status(400)
         .send({
-          msg: `ValidationError: ${err.message}`,
+          msg: `${type}ValidationError: ${err.message}`,
         })
     }
     if (querySchema) {
       try {
         await querySchema.validate(req.query)
       } catch (err) {
-        badRequest(err)
+        badRequest('Query', err)
         return
       }
     }
@@ -23,7 +23,7 @@ export const validationMiddleware = (querySchema?: Schema<object>, bodySchema?: 
       try {
         await bodySchema.validate(req.body)
       } catch (err) {
-        badRequest(err)
+        badRequest('Body', err)
         return
       }
     }

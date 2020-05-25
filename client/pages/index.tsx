@@ -16,7 +16,11 @@ const IndexPage = ({
       </div>
     )
   }
-  return null
+  return (
+    <div>
+      Select monitored URL from the sidebar or create new one.
+    </div>
+  )
 }
 
 IndexPage.propTypes = {

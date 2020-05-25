@@ -17,9 +17,15 @@ export const editMonitor: Handler = Router().use(
     } = req.body
 
     const data: MonitoredEndpoint = res.locals.monitor.data
-    data.name = name || data.name
-    data.url = url || data.url
-    data.monitoredIntervalSeconds = monitoredIntervalSeconds || data.monitoredIntervalSeconds
+    if (name !== undefined) {
+      data.name = name
+    }
+    if (url !== undefined) {
+      data.url = url
+    }
+    if (monitoredIntervalSeconds !== undefined) {
+      data.monitoredIntervalSeconds = monitoredIntervalSeconds
+    }
   
     await validateSchema(MonitoredEndpointSchema, data)
   

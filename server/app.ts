@@ -18,8 +18,8 @@ app.use(routes)
 app.use(errorMiddleware)
 
 app.listen(8080, () => {
-  checkEndpoints()
   console.log('Backend app listening at http://localhost:8080')
+  checkEndpoints()
 })
 
 process.on('unhandledRejection', (err) => {

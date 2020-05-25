@@ -71,3 +71,12 @@ export async function createMonitor ({
     },
   })
 }
+
+export async function getResults (monitorId: string) {
+  return request({
+    url: '/results',
+    params: {
+      monitorId,
+    },
+  })
+}

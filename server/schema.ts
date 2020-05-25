@@ -4,7 +4,7 @@ export const MINIMAL_INTERVAL_SECONDS = 10
 
 export const MonitoredEndpointBaseSchema = object().shape({
   name: string().required(),
-  url: string().required(),
+  url: string().url().required(),
   monitoredIntervalSeconds: number().min(MINIMAL_INTERVAL_SECONDS).required(),
 })
 
@@ -27,7 +27,7 @@ const ResponseSchema = object().shape({
 
 export const MonitoringResultSchema = object().shape({
   id: string().required(),
-  endpointId: string().required(),
+  monitorId: string().required(),
   dateCreated: date().required(),
   response: ResponseSchema.required(),
 })
