@@ -9,7 +9,8 @@
     "dev:client": "next client",
     "dev:server": "nodemon --exec 'ts-node' server/app.ts",
     "lint": "eslint server/**",
-    "lint:fix": "eslint --fix server/**"
+    "lint:fix": "eslint --fix server/**",
+    "test": "jest"
   },
   "devDependencies": {
     "@types/basic-auth": "^1.1.3",
