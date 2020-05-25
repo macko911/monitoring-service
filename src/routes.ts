@@ -3,10 +3,11 @@ import express from 'express'
 import {
   indexPage,
   addMonitor,
+  listMonitors,
   authenticate,
 } from './handlers'
 
-import { authMiddleware } from "./middleware";
+import { authMiddleware } from "./middleware"
 
 const router = express.Router()
 
@@ -17,7 +18,7 @@ router
     // .get('/', getMonitor)
     .post('/', addMonitor)
     // .put('/', editMonitor)
-    // .get('/list', listMonitors)
+    .get('/list', listMonitors)
   )
 
 export default router

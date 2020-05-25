@@ -1,11 +1,18 @@
-import * as yup from 'yup'
+import { string, object, number, date } from 'yup'
 
-export const MonitoredEndpointSchema = yup.object().shape({
-  // id: yup.string(),
-  name: yup.string().required(),
-  url: yup.string().required(),
-  dateCreated: yup.string().required(),
-  dateModified: yup.string().required(),
-  monitoredInterval: yup.number().min(10).required(),
-  owner: yup.string().required(),
+export const MonitoredEndpointBaseSchema = object().shape({
+  name: string().required(),
+  url: string().required(),
+  monitoredInterval: number().min(10).required(),
 })
+
+export const MonitoredEndpointComputedSchema = object().shape({
+    id: string().required(),
+    dateCreated: date().required(),
+    dateModified: date().required(),
+    owner: string().required(),
+  })
+
+export const MonitoredEndpointSchema = MonitoredEndpointBaseSchema.concat(
+  MonitoredEndpointComputedSchema,
+)

@@ -10,17 +10,17 @@ export type User = {
 
 export type MonitoredEndpointId = string
 
-export type MonitoredEndpoint = {
+export interface MonitoredEndpoint {
   id: MonitoredEndpointId;
   name: string;
   url: string;
-  dateCreated: Date;
-  dateModified: Date;
+  dateCreated: Date | string;
+  dateModified: Date | string;
   monitoredInterval: number;
   owner: UserId;
 }
 
-export type MonitoringResult = {
+export interface MonitoringResult {
   id: number;
   endpointId: MonitoredEndpointId;
   dateCreated: Date;
