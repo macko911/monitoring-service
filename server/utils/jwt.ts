@@ -6,6 +6,10 @@ type DecodedObject = {
   data: object;
 }
 
+/**
+ * Checks if token is valid and not expired, returns decoded token data
+ * @param token JWT token
+ */
 export const verifyToken = (token: string): Promise<object> => new Promise((resolve, reject) => {
   verify(token, SECRET, (err, decoded: DecodedObject) => {
     if (err) {
@@ -20,6 +24,11 @@ const SIGN_OPTIONS = {
   // expiresIn: '2d',
 }
 
+/**
+ * Creates unique JWT token based on supplied data.
+ * Token serves us to identify users according to their email address.
+ * @param data token data to encrypt
+ */
 export const createToken = (data: object): Promise<string> => new Promise((resolve, reject) => {
   const payload = {
     data,

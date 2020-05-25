@@ -10,7 +10,7 @@ export type User = {
 
 export type MonitoredEndpointId = string
 
-export interface MonitoredEndpoint {
+export type MonitoredEndpoint = {
   id: MonitoredEndpointId;
   name: string;
   url: string;
@@ -20,7 +20,7 @@ export interface MonitoredEndpoint {
   owner: UserId;
 }
 
-export interface MonitoringResult {
+export type MonitoringResult = {
   id: string;
   monitorId: MonitoredEndpointId;
   dateCreated: Date | string;
@@ -31,4 +31,8 @@ export type Response = {
   statusCode: number;
   contentType: string;
   payload: string;
+}
+
+export type QueryResponse<T> = {
+  data: Array<T>;
 }

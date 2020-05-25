@@ -8,6 +8,9 @@ const querySchema = object().shape({
   monitorId: string().required(),
 })
 
+/**
+ * List results related to a single endpoint monitor.
+ */
 export const listResults = Router().use(
   validationMiddleware(querySchema),
   asyncMiddleware(async (req, res) => {

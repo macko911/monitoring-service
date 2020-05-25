@@ -5,7 +5,11 @@ import { asyncMiddleware } from '../middleware'
 import { createToken } from '../utils/jwt'
 import { unauthorized } from '../utils/auth'
 
-export const authenticate = asyncMiddleware(async (req, res, next) => {
+/**
+ * Checks username/password sent as Basic Authorization header and returns
+ * JWT access token.
+ */
+export const authenticate = asyncMiddleware(async (req, res) => {
   const {name, pass} = basicAuth(req) || {}
 
   if (!name || !pass) {

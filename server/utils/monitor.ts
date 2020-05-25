@@ -4,6 +4,7 @@ import {
   MonitoredEndpoint,
   MonitoringResult,
   Response,
+  QueryResponse,
 } from '../../shared/models'
 import { validateSchema } from './validation'
 import { MonitoringResultSchema } from '../schema'
@@ -12,12 +13,11 @@ type QueryObject = {
   data: MonitoredEndpoint;
 }
 
-type QueryResponse = {
-  data: QueryObject[];
-}
-
+/**
+ * Lists all monitors from all users in the database
+ */
 export async function listAllMonitors () {
-  const result: QueryResponse = await client.query(
+  const result: QueryResponse<QueryObject> = await client.query(
     q.Map(
       q.Paginate(
         q.Match(
@@ -31,8 +31,12 @@ export async function listAllMonitors () {
   return result.data.map((monitor) => monitor.data)
 }
 
+/**
+ * Returns list of monitors owned by an authenticated user
+ * @param owner user id of monitor owner
+ */
 export async function listMonitorsByOwner (owner: string) {
-  const result: QueryResponse = await client.query(
+  const result: QueryResponse<QueryObject> = await client.query(
     q.Map(
       q.Paginate(
         q.Match(
@@ -46,7 +50,15 @@ export async function listMonitorsByOwner (owner: string) {
   return result.data.map((monitor) => monitor.data)
 }
 
-export async function saveMonitoringResult (monitorId: string, response: Response) {
+/**
+ * Store monitoring result to database 
+ * @param monitorId id of monitor related to the request response
+ * @param response details of the request response
+ */
+export async function saveMonitoringResult (
+  monitorId: string,
+  response: Response,
+) {
   const data: MonitoringResult = {
     id: v4(),
     dateCreated: new Date().toISOString(),

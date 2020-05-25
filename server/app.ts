@@ -22,6 +22,10 @@ app.listen(8080, () => {
   checkEndpoints()
 })
 
+/**
+ * In case there is an unhandled rejection in a Promise,
+ * we should terminate the service.
+ */
 process.on('unhandledRejection', (err) => {
   console.error(err)
   process.exit(1)

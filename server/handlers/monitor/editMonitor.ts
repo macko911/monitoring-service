@@ -6,7 +6,11 @@ import { MonitoredEndpoint } from '../../../shared/models'
 import { MonitoredEndpointSchema } from '../../schema'
 import { validateSchema } from '../../utils/validation'
 import { getMonitor } from './getMonitor'
+import { updateMonitor } from '../../utils/checkEndpoints'
 
+/**
+ * Edits name, url or monitor interval in database
+ */
 export const editMonitor: Handler = Router().use(
   getMonitor,
   asyncMiddleware(async (req, res) => {
@@ -35,6 +39,8 @@ export const editMonitor: Handler = Router().use(
         {data},
       )
     )
+
+    updateMonitor(data)
 
     res.status(204).send()
   })

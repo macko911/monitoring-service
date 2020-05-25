@@ -3,6 +3,10 @@ import { verifyToken } from '../utils/jwt'
 import { getUserByEmail } from '../utils/user'
 import { unauthorized } from '../utils/auth'
 
+/**
+ * Middleware to authenticate user according to access token before
+ * accessing secured endpoints.
+ */
 export const authMiddleware = asyncMiddleware(async (req, res, next) => {
   // check for Bearer "accessToken"
   const authHeader = req.get('Authorization') || ''

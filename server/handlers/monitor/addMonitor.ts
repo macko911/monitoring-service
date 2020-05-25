@@ -9,7 +9,11 @@ import {
   MonitoredEndpointSchema,
 } from '../../schema'
 import { validateSchema } from '../../utils/validation'
+import { updateMonitor } from '../../utils/checkEndpoints'
 
+/**
+ * Create new monitor for logged in user.
+ */
 export const addMonitor: Handler = Router().use(
   validationMiddleware(null, MonitoredEndpointBaseSchema),
   asyncMiddleware(async (req, res) => {
@@ -37,6 +41,8 @@ export const addMonitor: Handler = Router().use(
         {data},
       )
     )
+
+    updateMonitor(data)
 
     res.send(data.id)
   })

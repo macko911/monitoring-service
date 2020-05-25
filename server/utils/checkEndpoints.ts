@@ -8,20 +8,33 @@ import { MINIMAL_INTERVAL_SECONDS } from '../schema'
 // keep track of all checked intervals
 const monitors = {}
 
-export function updateMonitor (monitor: MonitoredEndpoint) {
+/**
+ * Run monitor and fire requests at specified intervals. Reset monitor on change.
+ * @param monitor settings of monitor
+ */
+export function updateMonitor (monitor: MonitoredEndpoint, action?: 'DELETE') {
   const {
     monitoredIntervalSeconds,
     id,
   } = monitor
   // check that we don't overload the server with too many requests
-  if (!monitoredIntervalSeconds || monitoredIntervalSeconds < MINIMAL_INTERVAL_SECONDS) {
+  if (
+    !monitoredIntervalSeconds ||
+    monitoredIntervalSeconds < MINIMAL_INTERVAL_SECONDS
+  ) {
     return
   }
   // remove old interval if there was one already set up
   if (monitors[id]) {
     clearInterval(monitors[id])
   }
-  monitors[id] = setInterval(() => checkEndpoint(monitor), ms(`${monitoredIntervalSeconds}s`))
+  if (action === 'DELETE') {
+    return
+  }
+  monitors[id] = setInterval(
+    () => checkEndpoint(monitor),
+    ms(`${monitoredIntervalSeconds}s`),
+  )
 }
 
 async function checkEndpoint (monitor: MonitoredEndpoint) {
@@ -40,8 +53,10 @@ async function checkEndpoint (monitor: MonitoredEndpoint) {
   await saveMonitoringResult(id, response)
 }
 
+/**
+ * Start checking defined endpoints and store reponses
+ */
 export const checkEndpoints = async () => {
-  return
   console.log('Start monitoring urls...')
   // fetch all monitored endpoints
   const allMonitors = await listAllMonitors()
