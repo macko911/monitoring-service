@@ -21,11 +21,11 @@ const router = express.Router()
 router
   .get('/', indexPage)
   .post('/login', authenticate)
-  .use('/results', authMiddleware, router
+  .use('/results', authMiddleware, express.Router()
     .get('/list', listResults)
     .delete('/', clearResults)
   )
-  .use('/monitor', authMiddleware, router
+  .use('/monitor', authMiddleware, express.Router()
     .get('/', sendMonitor)
     .post('/', addMonitor)
     .put('/', editMonitor)

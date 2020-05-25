@@ -1,42 +1,41 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import Link from 'next/link'
-import { Box, Header, Grommet, Heading } from 'grommet'
+import { Box, Grommet } from 'grommet'
+import * as ls from 'local-storage'
 
 import Sidebar from './Sidebar'
-import LoginButton from './LoginButton'
+import Header from './Header'
+import { connect } from 'react-redux'
+import { authLogin } from '../store/actions'
 
-const Logo = styled(Heading)`
-  a {
-    color: black;
-    text-decoration: none;
-  }
+const StyledGrommet = styled(Grommet)`
+  height: 100%;
 `
 
-export const Layout = ({children}) => {
+const Layout = ({children, dispatch}) => {
+  React.useEffect(() => {
+    const accessToken = ls.get('accessToken') as string
+    if (accessToken) {
+      dispatch(authLogin(accessToken))
+    }
+  }, [])
   return (
-    <Grommet>
-      <Header pad="small">
-        <Logo level={2}>
-          <Link href='/'>
-            <a>
-            Digitoo monitoring service
-            </a>
-          </Link>
-        </Logo>
-        <LoginButton />
-      </Header>
+    <StyledGrommet>
+      <Header />
       <Box direction="row" flex="grow">
         <Sidebar />
-        <Box pad="small">
+        <Box pad="small" flex="grow">
           {children}
         </Box>
       </Box>
-    </Grommet>
+    </StyledGrommet>
   )
 }
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  dispatch: PropTypes.func.isRequired,
 }
+
+export default connect()(Layout)

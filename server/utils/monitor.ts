@@ -4,7 +4,7 @@ import {
   MonitoredEndpoint,
   MonitoringResult,
   Response,
-} from '../models'
+} from '../../shared/models'
 import { validateSchema } from './validation'
 import { MonitoringResultSchema } from '../schema'
 

@@ -2,7 +2,7 @@ import fetch from 'cross-fetch'
 import ms from 'ms'
 
 import { listAllMonitors, saveMonitoringResult } from './monitor'
-import { MonitoredEndpoint, Response } from '../models'
+import { MonitoredEndpoint, Response } from '../../shared/models'
 import { MINIMAL_INTERVAL_SECONDS } from '../schema'
 
 // keep track of all checked intervals
@@ -41,6 +41,7 @@ async function checkEndpoint (monitor: MonitoredEndpoint) {
 }
 
 export const checkEndpoints = async () => {
+  return
   // fetch all monitored endpoints
   const allMonitors = await listAllMonitors()
   if (!allMonitors.length) {

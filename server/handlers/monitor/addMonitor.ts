@@ -3,7 +3,7 @@ import { v4 } from 'uuid'
 
 import { q, client } from '../../utils/db'
 import { asyncMiddleware, validationMiddleware } from '../../middleware'
-import { MonitoredEndpoint } from '../../models'
+import { MonitoredEndpoint } from '../../../shared/models'
 import {
   MonitoredEndpointBaseSchema,
   MonitoredEndpointSchema,

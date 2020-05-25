@@ -21,7 +21,6 @@ const LoginButton = ({
   }
   return (
     <Button
-      primary
       label="Logout"
       onClick={() => dispatch(authLogout())}
     />

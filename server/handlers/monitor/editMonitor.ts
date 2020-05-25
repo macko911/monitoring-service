@@ -2,7 +2,7 @@ import { Router, Handler } from 'express'
 
 import { q, client } from '../../utils/db'
 import { asyncMiddleware } from '../../middleware'
-import { MonitoredEndpoint } from '../../models'
+import { MonitoredEndpoint } from '../../../shared/models'
 import { MonitoredEndpointSchema } from '../../schema'
 import { validateSchema } from '../../utils/validation'
 import { getMonitor } from './getMonitor'

@@ -6,7 +6,7 @@ import {
   validationMiddleware,
 } from '../../middleware'
 import { q, client } from '../../utils/db'
-import { MonitoredEndpoint } from '../../models'
+import { MonitoredEndpoint } from '../../../shared/models'
 
 type QueryObject = {
   data: MonitoredEndpoint;

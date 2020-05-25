@@ -1,5 +1,5 @@
 import { client, q } from './db'
-import { User } from '../models'
+import { User } from '../../shared/models'
 
 type UserResponse = {
   data: User;

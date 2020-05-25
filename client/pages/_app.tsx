@@ -8,7 +8,7 @@ import { store } from '../store'
 import '../styles.css'
 
 // eslint-disable-next-line react/prop-types
-export default function App({Component, pageProps}) {
+function App({Component, pageProps}) {
   return  (
     <Provider store={store}>
       <Head>
@@ -23,3 +23,5 @@ export default function App({Component, pageProps}) {
     </Provider>
   )
 }
+
+export default App

@@ -1,5 +1,6 @@
 import React, { FormEvent } from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { useRouter } from 'next/router'
 import {
@@ -11,9 +12,15 @@ import {
 } from 'grommet'
 
 import * as api from '../api'
-import { authLogin, authLogout } from '../store/actions'
+import { authLogin } from '../store/actions'
 import { isLoggedIn } from '../store/selectors'
 import { State } from '../store/reducers'
+
+const Wrap = styled.div`
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+`
 
 const LoginPage = ({
   dispatch,
@@ -53,7 +60,7 @@ const LoginPage = ({
   }
 
   return (
-    <div>
+    <Wrap>
       <Paragraph >
         Login to your account:
       </Paragraph>
@@ -91,7 +98,7 @@ const LoginPage = ({
           {error}
         </Paragraph>
       )}
-    </div>
+    </Wrap>
   )
 }
 
