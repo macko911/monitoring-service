@@ -17,6 +17,5 @@ export async function createDocument (name: string, data: object) {
   const res = await client.query(
     q.Create(q.Collection(name), { data })
   )
-  console.log(res)
   return res
 }

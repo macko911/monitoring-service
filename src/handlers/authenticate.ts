@@ -1,34 +1,27 @@
 import compare from 'tsscmp'
 import basicAuth from 'basic-auth'
-import { Response } from 'express'
-import { getUser } from '../utils/user'
+import { getUserByEmail } from '../utils/user'
 import { asyncMiddleware } from '../middleware'
+import { createToken } from '../utils/jwt'
+import { unauthorized } from '../utils/auth'
 
-function forbidAccess (res: Response) {
-  res
-    .status(401)
-    .json({
-      msg: 'You are not allowed access to this endpoint.',
-    })
-}
-
-const authenticate = asyncMiddleware(async (req, res, next) => {
+export const authenticate = asyncMiddleware(async (req, res, next) => {
   const {name, pass} = basicAuth(req) || {}
 
   if (!name || !pass) {
     res.set('WWW-Authenticate', 'Basic')
-    return forbidAccess(res)
+    return unauthorized(res)
   }
   
   // get user password
-  const user = await getUser(name)
+  const user = await getUserByEmail(name)
 
   // compare with database
   if (!user || !user.password || !compare(user.password, pass)) {
-    return forbidAccess(res)
+    return unauthorized(res)
   }
 
-  res.send(user.accessToken)
-})
+  const accessToken = await createToken({email: user.email})
 
-export default authenticate
+  res.send(accessToken)
+})

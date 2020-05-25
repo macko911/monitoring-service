@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2018",
     "module": "CommonJS",
-    "esModuleInterop": true
+    "esModuleInterop": true,
   },
   "include": [
     "src/**/*"

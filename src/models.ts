@@ -1,4 +1,4 @@
-export type UserId = number
+export type UserId = string
 
 export type User = {
   id: UserId;
@@ -8,7 +8,7 @@ export type User = {
   accessToken: string;
 }
 
-export type MonitoredEndpointId = number
+export type MonitoredEndpointId = string
 
 export type MonitoredEndpoint = {
   id: MonitoredEndpointId;
