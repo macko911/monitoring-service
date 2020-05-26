@@ -64,5 +64,5 @@ export const checkEndpoints = async () => {
     console.log('No monitors set up yet...')
   }
   // run interval for each monitor
-  allMonitors.forEach(updateMonitor)
+  allMonitors.forEach((monitor) => updateMonitor(monitor))
 }
