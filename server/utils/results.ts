@@ -13,12 +13,14 @@ type QueryObject = {
  * @param operation FaunaDb operation executed on each query result
  * @param match narrow down results that match string
  * @param size number of results to fetch
+ * @param values list of returned keys from index
  */
 async function getResults (
   index: string,
   operation: (arg0: any) => any,
   match?: string,
   size = 100000,
+  values = ['ref'],
 ) {
   return client.query(
     q.Map(
@@ -29,7 +31,7 @@ async function getResults (
         ),
         { size },
       ),
-      q.Lambda('x', operation(q.Var('x'))),
+      q.Lambda(values, operation(q.Var('ref'))),
     ),
   )
 }
@@ -47,7 +49,7 @@ export async function deleteAllResults () {
  */
 export async function deleteResultsByMonitorId (monitorId: string) {
   await getResults(
-    'MonitoringResult',
+    'MonitoringResult_by_monitorId',
     q.Delete,
     monitorId,
   )
@@ -59,10 +61,11 @@ export async function deleteResultsByMonitorId (monitorId: string) {
  */
 export async function listResultsByMonitorId (monitorId: string) {
   const result = await getResults(
-    'MonitoringResult_by_monitorId',
+    'MonitoringResult_by_monitorId_desc',
     q.Get,
     monitorId,
     10,
+    ['dateCreated', 'ref'],
   ) as QueryResponse<QueryObject>
   
   return result.data
