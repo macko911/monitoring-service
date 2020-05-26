@@ -1,10 +1,10 @@
 # 💂‍♀️ Digitoo monitoring service
 
-This app lets you monitor selected URLs by periodically sending requests to them and storing responses that can be viewed in the browser using our frontend app.
+This app lets you monitor selected URLs by periodically sending requests to them and storing responses that can be viewed in the browser using the frontend app.
 
 ## Getting started
 
-First we need to install Node dependencies using our favourite packages manager, f.e.
+First we need to install Node dependencies using our favourite packages manager in the root of the project, f.e.
 
 ```bash
 yarn
@@ -25,6 +25,8 @@ npm run dev
 
 Frontend is served at http://localhost:3000  
 Backend is served at http://localhost:8080
+
+Code changes are propagated without having to manually restart the servers.
 
 We use `concurrently` package to run multiple npm scripts at the same time, ensuring cross-platform compatibility.
 
@@ -47,6 +49,10 @@ In order to test the app, we first need to get an accessToken via the `/login` e
 |---|---|
 | info@applifting.cz  | applifting  |
 | batman@example.com  | batman  |
+
+### Database
+
+We're using a modern serverless database [FaunaDB](https://fauna.com/).
 
 ## API Reference
 
