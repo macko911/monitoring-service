@@ -4,6 +4,15 @@ This app lets you monitor selected URLs by periodically sending requests to them
 
 ## Getting started
 
+If you have Docker installed, you should be able to start the app simply by running
+```bash
+docker-compose up
+```
+
+If that works for you, proceed to the [Usage](#usage) section.
+
+For non-Docker development, please continue reading.
+
 First we need to install Node dependencies using our favourite packages manager in the root of the project, f.e.
 
 ```bash
@@ -34,7 +43,7 @@ We use `concurrently` package to run multiple npm scripts at the same time, ensu
 
 ### Environmental variables
 
-Before running the app, we need to create a `.env` file in the `/server` folder which will store our secrets. Simply rename the `.env.default` file to `.env` and fill in the empty values.
+Before running the app, we need to have a valid `.env` file in the `/server` folder where we store our secrets. Simply rename the `.env.default` file to `.env` and fill in the empty values.
 ```
 FAUNA_DB_SECRET=
 JWT_SECRET=
