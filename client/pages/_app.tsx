@@ -1,9 +1,9 @@
 import React from 'react'
 import Head from 'next/head'
-import { Provider } from 'react-redux'
+import {Provider} from 'react-redux'
 
-import { Layout } from '../components'
-import { store } from '../store'
+import {Layout} from '../components'
+import {store} from '../store'
 
 import '../styles.css'
 

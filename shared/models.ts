@@ -2,10 +2,10 @@ export type UserId = string
 
 export type User = {
   id: UserId;
-  name: string;
   email: string;
   password: string;
-  accessToken: string;
+  name?: string;
+  accessToken?: string;
 }
 
 export type MonitoredEndpointId = string

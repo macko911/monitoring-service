@@ -6,12 +6,12 @@ import {
   Box,
   Button,
 } from 'grommet'
-import { connect } from 'react-redux'
-import { useRouter } from 'next/router'
-import { State } from '../store/reducers'
+import {connect} from 'react-redux'
+import {useRouter} from 'next/router'
+import {State} from '../store/reducers'
 
-import { isLoggedIn, getMonitors, getMonitor } from '../store/selectors'
-import { listMonitors, addMonitor } from '../store/actions'
+import {isLoggedIn, getMonitors, getMonitor} from '../store/selectors'
+import {listMonitors, addMonitor} from '../store/actions'
 
 const Wrap = styled(Box)`
   width: 100%;
@@ -54,7 +54,7 @@ const Sidebar = ({
       dispatch(listMonitors())
     }
   }, [loggedIn])
-  const { query, push } = useRouter()
+  const {query, push} = useRouter()
 
   if (!loggedIn) {
     return null

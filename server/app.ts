@@ -5,8 +5,8 @@ import cors from 'cors'
 import morgan from 'morgan'
 
 import routes from './routes'
-import { errorMiddleware } from './middleware'
-import { checkEndpoints } from './utils/checkEndpoints'
+import {errorMiddleware} from './middleware'
+import {checkEndpoints} from './utils/checkEndpoints'
 
 const app = express()
 

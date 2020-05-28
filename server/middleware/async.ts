@@ -1,4 +1,4 @@
-import { Handler } from 'express'
+import {Handler} from 'express'
 
 /**
  * Allows Express middleware to be an async function

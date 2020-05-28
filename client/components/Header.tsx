@@ -1,8 +1,9 @@
 import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
-import { Box, Heading, Header as GrometHeader } from 'grommet'
+import {Box, Heading, Header as GrometHeader} from 'grommet'
 import LoginButton from './LoginButton'
+import SignupButton from './SignupButton'
 
 const Logo = styled(Heading)`
   margin: 0;
@@ -19,11 +20,14 @@ const Header = () => {
         <Logo level={2}>
           <Link href='/'>
             <a>
-                Digitoo monitoring service
+              URL Monitoring
             </a>
           </Link>
         </Logo>
-        <LoginButton />
+        <Box gap="small" direction="row">
+          <SignupButton />
+          <LoginButton />
+        </Box>
       </GrometHeader>
       <Box pad="small" />
     </>

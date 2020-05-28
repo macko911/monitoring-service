@@ -1,6 +1,6 @@
-import { Handler } from 'express'
-import { deleteAllResults } from '../../utils/results'
-import { asyncMiddleware } from '../../middleware'
+import {Handler} from 'express'
+import {deleteAllResults} from '../../utils/results'
+import {asyncMiddleware} from '../../middleware'
 
 /**
  * Removes all results from database

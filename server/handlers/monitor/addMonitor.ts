@@ -1,15 +1,15 @@
-import { Router, Handler } from 'express'
-import { v4 } from 'uuid'
+import {Router, Handler} from 'express'
+import {v4} from 'uuid'
 
-import { q, client } from '../../utils/db'
-import { asyncMiddleware, validationMiddleware } from '../../middleware'
-import { MonitoredEndpoint } from '../../../shared/models'
+import {q, client} from '../../utils/db'
+import {asyncMiddleware, validationMiddleware} from '../../middleware'
+import {MonitoredEndpoint} from '../../../shared/models'
 import {
   MonitoredEndpointBaseSchema,
   MonitoredEndpointSchema,
 } from '../../schema'
-import { validateSchema } from '../../utils/validation'
-import { updateMonitor } from '../../utils/checkEndpoints'
+import {validateSchema} from '../../utils/validation'
+import {updateMonitor} from '../../utils/checkEndpoints'
 
 /**
  * Create new monitor for logged in user.
@@ -39,11 +39,11 @@ export const addMonitor: Handler = Router().use(
       q.Create(
         q.Collection('MonitoredEndpoint'),
         {data},
-      )
+      ),
     )
 
     updateMonitor(data)
 
     res.send(data.id)
-  })
+  }),
 )

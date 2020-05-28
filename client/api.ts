@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from 'axios'
+import axios, {AxiosRequestConfig} from 'axios'
 import * as ls from 'local-storage'
 
 const BASE_URL = 'http://localhost:8080'
@@ -24,6 +24,17 @@ export async function login (username: string, password: string) {
     method: 'post',
     auth: {
       username,
+      password,
+    },
+  })
+}
+
+export async function signUp (email: string, password: string) {
+  return request({
+    url: '/signup',
+    method: 'post',
+    data: {
+      email,
       password,
     },
   })

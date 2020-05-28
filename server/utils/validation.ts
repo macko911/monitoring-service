@@ -1,4 +1,4 @@
-import { Schema } from 'yup'
+import {Schema} from 'yup'
 
 /**
  * Validates data against schema

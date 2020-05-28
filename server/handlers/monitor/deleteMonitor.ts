@@ -1,11 +1,11 @@
-import { Router, Handler } from 'express'
+import {Router, Handler} from 'express'
 
-import { getMonitor } from './getMonitor'
-import { client, q } from '../../utils/db'
-import { asyncMiddleware } from '../../middleware'
-import { deleteResultsByMonitorId } from '../../utils/results'
-import { MonitoredEndpoint } from '../../../shared/models'
-import { updateMonitor } from '../../utils/checkEndpoints'
+import {getMonitor} from './getMonitor'
+import {client, q} from '../../utils/db'
+import {asyncMiddleware} from '../../middleware'
+import {deleteResultsByMonitorId} from '../../utils/results'
+import {MonitoredEndpoint} from '../../../shared/models'
+import {updateMonitor} from '../../utils/checkEndpoints'
 
 /**
  * Deletes monitor from database according to monitor ID
@@ -17,7 +17,7 @@ export const deleteMonitor: Handler = Router().use(
       const ref = res.locals.monitor.ref
       // delete monitored endpoint
       await client.query(
-        q.Delete(ref)
+        q.Delete(ref),
       )
       const monitor = res.locals.monitor.data as MonitoredEndpoint
       // delete all results associated with monitored endpoint
@@ -32,5 +32,5 @@ export const deleteMonitor: Handler = Router().use(
           msg: `Failed to delete monitor with id ${req.query.id}: ${err.messsage}`,
         })
     }
-  })
+  }),
 )

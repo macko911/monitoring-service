@@ -1,13 +1,13 @@
-import { v4 } from 'uuid'
-import { client, q } from './db'
+import {v4} from 'uuid'
+import {client, q} from './db'
 import {
   MonitoredEndpoint,
   MonitoringResult,
   Response,
   QueryResponse,
 } from '../../shared/models'
-import { validateSchema } from './validation'
-import { MonitoringResultSchema } from '../schema'
+import {validateSchema} from './validation'
+import {MonitoringResultSchema} from '../schema'
 
 type QueryObject = {
   data: MonitoredEndpoint;
@@ -23,7 +23,7 @@ export async function listAllMonitors () {
         q.Match(
           q.Index('MonitoredEndpoint'),
         ),
-        { size: 100000 },
+        {size: 100000},
       ),
       q.Lambda('x', q.Get(q.Var('x'))),
     ),
@@ -70,6 +70,6 @@ export async function saveMonitoringResult (
     q.Create(
       q.Collection('MonitoringResult'),
       {data},
-    )
+    ),
   )
 }

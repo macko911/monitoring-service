@@ -1,7 +1,7 @@
-import { Handler } from 'express'
+import {Handler} from 'express'
 
-import { asyncMiddleware } from '../../middleware'
-import { listMonitorsByOwner } from '../../utils/monitor'
+import {asyncMiddleware} from '../../middleware'
+import {listMonitorsByOwner} from '../../utils/monitor'
 
 /**
  * Returns list of all monitors craeted by logged in user

@@ -1,11 +1,11 @@
-import { combineReducers } from 'redux'
+import {combineReducers} from 'redux'
 import {
   AUTH_LOGIN,
   AUTH_LOGOUT,
   MONITORS_LIST,
   MONITORS_ADD,
 } from './actions'
-import { MonitoredEndpoint } from '../../shared/models'
+import {MonitoredEndpoint} from '../../shared/models'
 
 type AuthState = {
   accessToken: string | null;

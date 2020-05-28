@@ -1,4 +1,4 @@
-import { string, object, number, date } from 'yup'
+import {string, object, number, date} from 'yup'
 
 export const MINIMAL_INTERVAL_SECONDS = 10
 

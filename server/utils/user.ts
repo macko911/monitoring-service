@@ -1,5 +1,5 @@
-import { client, q } from './db'
-import { User } from '../../shared/models'
+import {client, q} from './db'
+import {User} from '../../shared/models'
 
 type UserResponse = {
   data: User;
@@ -16,8 +16,8 @@ export async function getUserByEmail (email: string): Promise<User | void> {
         q.Match(
           q.Index('User_by_email'),
           email,
-        )
-      )
+        ),
+      ),
     )
     return res.data
   } catch (err) {
@@ -36,8 +36,8 @@ export async function getUserById (userId: string): Promise<User | void> {
         q.Match(
           q.Index('User_by_id'),
           userId,
-        )
-      )
+        ),
+      ),
     )
     return res.data
   } catch (err) {

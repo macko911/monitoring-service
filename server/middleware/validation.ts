@@ -1,6 +1,6 @@
-import { Handler } from 'express'
-import { asyncMiddleware } from './async'
-import { Schema, ValidationError } from 'yup'
+import {Handler} from 'express'
+import {asyncMiddleware} from './async'
+import {Schema, ValidationError} from 'yup'
 
 /**
  * Validates request query/body parameters against a yup schema.

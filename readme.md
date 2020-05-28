@@ -1,6 +1,6 @@
-# 💂‍♀️ Digitoo monitoring service
+# 💂‍♀️ URL Monitor
 
-This app lets you monitor selected URLs by periodically sending requests to them and storing responses that can be viewed in the browser using the frontend app.
+This demo app lets you monitor selected URLs by periodically sending requests to them and storing responses that can be viewed in the browser using the frontend app.
 
 ## Getting started
 
@@ -56,7 +56,6 @@ In order to test the app, we first need to get an accessToken via the `/login` e
 #### Test users
 | email  | password  |
 |---|---|
-| info@applifting.cz  | applifting  |
 | batman@example.com  | batman  |
 
 ### Database

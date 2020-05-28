@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import Router from 'next/router'
-import { connect } from 'react-redux'
-import { Button } from 'grommet'
+import {connect} from 'react-redux'
+import {Button} from 'grommet'
 
-import { authLogout } from '../store/actions'
-import { isLoggedIn } from '../store/selectors'
-import { State } from '../store/reducers'
+import {authLogout} from '../store/actions'
+import {isLoggedIn} from '../store/selectors'
+import {State} from '../store/reducers'
 
 const LoginButton = ({
   dispatch,
@@ -20,7 +20,7 @@ const LoginButton = ({
   if (!loggedIn) {
     return (
       <Link href='/login'>
-        <Button primary label="Login" />
+        <Button label="Login" />
       </Link>
     )
   }

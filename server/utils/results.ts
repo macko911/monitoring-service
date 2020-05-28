@@ -1,6 +1,6 @@
-import { client, q } from './db'
-import { MonitoringResult } from '../../shared/models'
-import { QueryResponse } from '../../shared/models'
+import {client, q} from './db'
+import {MonitoringResult} from '../../shared/models'
+import {QueryResponse} from '../../shared/models'
 
 type QueryObject = {
   data: MonitoringResult;
@@ -29,7 +29,7 @@ async function getResults (
           q.Index(index),
           match,
         ),
-        { size },
+        {size},
       ),
       q.Lambda(values, operation(q.Var('ref'))),
     ),

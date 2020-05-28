@@ -1,6 +1,6 @@
-import { object, string } from 'yup'
+import {object, string} from 'yup'
 
-import { validateSchema } from './validation'
+import {validateSchema} from './validation'
 
 const testSchema = object().shape({
   id: string().required(),

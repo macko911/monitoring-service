@@ -1,12 +1,12 @@
-import { Router, Handler } from 'express'
-import { object, string } from 'yup'
+import {Router, Handler} from 'express'
+import {object, string} from 'yup'
 
 import {
   asyncMiddleware,
   validationMiddleware,
 } from '../../middleware'
-import { q, client } from '../../utils/db'
-import { MonitoredEndpoint } from '../../../shared/models'
+import {q, client} from '../../utils/db'
+import {MonitoredEndpoint} from '../../../shared/models'
 
 type QueryObject = {
   data: MonitoredEndpoint;
@@ -40,5 +40,5 @@ export const getMonitor: Handler = Router().use(
         })
       return
     }
-  })
+  }),
 )

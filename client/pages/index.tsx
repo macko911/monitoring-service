@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
-import { connect } from 'react-redux'
-import { State } from '../store/reducers'
+import {connect} from 'react-redux'
+import {State} from '../store/reducers'
 
-import { isLoggedIn } from '../store/selectors'
+import {isLoggedIn} from '../store/selectors'
 
 const IndexPage = ({
   loggedIn,

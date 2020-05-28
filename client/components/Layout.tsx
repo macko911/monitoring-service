@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Box, Grommet } from 'grommet'
+import {Box, Grommet} from 'grommet'
 import * as ls from 'local-storage'
 
 import Sidebar from './Sidebar'
 import Header from './Header'
-import { connect } from 'react-redux'
-import { authLogin } from '../store/actions'
+import {connect} from 'react-redux'
+import {authLogin} from '../store/actions'
 
 const StyledGrommet = styled(Grommet)`
   height: 100%;

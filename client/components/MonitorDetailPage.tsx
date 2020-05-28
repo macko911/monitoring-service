@@ -1,8 +1,8 @@
-import React, { FormEvent } from 'react'
+import React, {FormEvent} from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import dayjs from 'dayjs'
-import { useRouter } from 'next/router'
+import {useRouter} from 'next/router'
 import {
   FormField,
   TextInput,
@@ -13,8 +13,8 @@ import {
 } from 'grommet'
 
 import * as api from '../api'
-import { listMonitors } from '../store/actions'
-import { MonitoredEndpoint } from '../../shared/models'
+import {listMonitors} from '../store/actions'
+import {MonitoredEndpoint} from '../../shared/models'
 
 const Wrap = styled(Box)`
   max-width: 500px;
@@ -46,7 +46,7 @@ const MonitorDetailPage = ({
   const [newDetail, setNewDetail] = React.useState(detail)
   const [results, setResults] = React.useState([])
   const [isFetching, setFetching] = React.useState(false)
-  const { push } = useRouter()
+  const {push} = useRouter()
 
   React.useEffect(() => {
     setNewDetail(detail)
