@@ -2,6 +2,12 @@
 
 This demo app lets you monitor selected URLs by periodically sending requests to them and storing responses that can be viewed in the browser using the frontend app.
 
+## Demo
+
+```
+TBD
+```
+
 ## Getting started
 
 If you have Docker installed, you should be able to start the app simply by running
