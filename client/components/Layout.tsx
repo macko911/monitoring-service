@@ -8,6 +8,7 @@ import Sidebar from './Sidebar'
 import Header from './Header'
 import {connect} from 'react-redux'
 import {authLogin} from '../store/actions'
+import {AuthState} from '../../shared/models'
 
 const StyledGrommet = styled(Grommet)`
   height: 100%;
@@ -15,9 +16,9 @@ const StyledGrommet = styled(Grommet)`
 
 const Layout = ({children, dispatch}) => {
   React.useEffect(() => {
-    const accessToken = ls.get('accessToken') as string
-    if (accessToken) {
-      dispatch(authLogin(accessToken))
+    const loggedUser = ls.get('login') as AuthState
+    if (loggedUser) {
+      dispatch(authLogin(loggedUser))
     }
   }, [])
   return (

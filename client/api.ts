@@ -1,11 +1,13 @@
 import axios, {AxiosRequestConfig} from 'axios'
 import * as ls from 'local-storage'
+import {AuthState} from '../shared/models'
 
 const BASE_URL = 'http://localhost:8080'
 
 async function request (params: AxiosRequestConfig) {
   // add accessToken to request if user logged in
-  const accessToken = ls.get('accessToken')
+  const loggedUser: AuthState = ls.get('login')
+  const {accessToken} = loggedUser || {}
   if (accessToken) {
     params.headers = {
       ...params.headers,

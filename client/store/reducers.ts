@@ -5,14 +5,15 @@ import {
   MONITORS_LIST,
   MONITORS_ADD,
 } from './actions'
-import {MonitoredEndpoint} from '../../shared/models'
+import {
+  MonitoredEndpoint,
+  AuthState,
+} from '../../shared/models'
 
-type AuthState = {
-  accessToken: string | null;
-}
-
-const initAuth = {
+const initAuth: AuthState = {
   accessToken: null,
+  email: null,
+  name: null,
 }
 
 export const auth = (state = initAuth, {type, payload}) => {
@@ -21,13 +22,12 @@ export const auth = (state = initAuth, {type, payload}) => {
       return {
         ...state,
         accessToken: payload.accessToken,
+        email: payload.email,
+        name: payload.name,
       }
 
     case AUTH_LOGOUT:
-      return {
-        ...state,
-        accessToken: null,
-      }
+      return initAuth
 
     default:
       return state

@@ -50,6 +50,7 @@ export const signUp: Handler = Router().use(
 
     res.send({
       accessToken,
+      email,
     })
   }),
 )

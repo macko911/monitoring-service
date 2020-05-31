@@ -36,7 +36,10 @@ const SignupForm = ({
     setFetching(true)
     try {
       const res = await api.signUp(email, password)
-      dispatch(authLogin(res.data.accessToken))
+      dispatch(authLogin({
+        email,
+        accessToken: res.data.accessToken,
+      }))
       setError(null)
       push('/')
     } catch (err) {

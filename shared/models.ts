@@ -36,3 +36,9 @@ export type Response = {
 export type QueryResponse<T> = {
   data: Array<T>;
 }
+
+export type AuthState = {
+  accessToken: string | null;
+  email: string | null;
+  name?: string | null;
+}

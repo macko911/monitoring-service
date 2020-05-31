@@ -2,8 +2,10 @@ import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 import {Box, Heading, Header as GrometHeader} from 'grommet'
+
 import LoginButton from './LoginButton'
 import SignupButton from './SignupButton'
+import LoggedUser from './LoggedUser'
 
 const Logo = styled(Heading)`
   margin: 0;
@@ -24,9 +26,10 @@ const Header = () => {
             </a>
           </Link>
         </Logo>
-        <Box gap="small" direction="row">
+        <Box gap="small" direction="row" align="center">
           <SignupButton />
           <LoginButton />
+          <LoggedUser />
         </Box>
       </GrometHeader>
       <Box pad="small" />

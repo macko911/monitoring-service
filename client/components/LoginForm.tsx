@@ -36,7 +36,12 @@ const LoginForm = ({
     setFetching(true)
     try {
       const res = await api.login(email, password)
-      dispatch(authLogin(res.data.accessToken))
+      const {accessToken, name} = res.data
+      dispatch(authLogin({
+        accessToken,
+        name,
+        email,
+      }))
       setError(null)
       push('/')
     } catch (err) {
