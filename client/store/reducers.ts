@@ -4,13 +4,16 @@ import {
   AUTH_LOGOUT,
   MONITORS_LIST,
   MONITORS_ADD,
+  MONITORING_START,
+  MONITORING_STOP,
 } from './actions'
 import {
   MonitoredEndpoint,
-  AuthState,
+  User,
 } from '../../shared/models'
 
-const initAuth: AuthState = {
+const initAuth: User = {
+  id: null,
   accessToken: null,
   email: null,
   name: null,
@@ -20,7 +23,7 @@ export const auth = (state = initAuth, {type, payload}) => {
   switch (type) {
     case AUTH_LOGIN:
       return {
-        ...state,
+        id: payload.id,
         accessToken: payload.accessToken,
         email: payload.email,
         name: payload.name,
@@ -60,12 +63,27 @@ export const monitors = (state = [], {type, payload}) => {
   }
 }
 
+export const monitoring = (state = false, {type}) => {
+  switch (type) {
+    case MONITORING_START:
+      return true
+
+    case MONITORING_STOP:
+      return false
+
+    default:
+      return state
+  }
+}
+
 export type State = {
-  auth: AuthState,
-  monitors: MonitoredEndpoint[],
+  auth: User;
+  monitors: MonitoredEndpoint[];
+  monitoring: boolean;
 }
 
 export const reducers = combineReducers({
   auth,
   monitors,
+  monitoring,
 })

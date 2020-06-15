@@ -7,18 +7,21 @@ import * as ls from 'local-storage'
 import Sidebar from './Sidebar'
 import Header from './Header'
 import {connect} from 'react-redux'
-import {authLogin} from '../store/actions'
-import {AuthState} from '../../shared/models'
+import {authLogin, checkMonitoringState} from '../store/actions'
+import {User} from '../../shared/models'
 
 const StyledGrommet = styled(Grommet)`
   height: 100%;
 `
 
 const Layout = ({children, dispatch}) => {
+  // check local storage if user has valid auth token
+  // TODO: add token expiration on BE and check that token is valid
   React.useEffect(() => {
-    const loggedUser = ls.get('login') as AuthState
+    const loggedUser = ls.get('login') as User
     if (loggedUser) {
       dispatch(authLogin(loggedUser))
+      dispatch(checkMonitoringState())
     }
   }, [])
   return (

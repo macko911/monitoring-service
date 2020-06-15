@@ -13,6 +13,10 @@ import {
 
   clearResults,
   listResults,
+
+  getMonitoring,
+  startMonitoring,
+  stopMonitoring,
 } from './handlers'
 
 import {authMiddleware} from './middleware'
@@ -33,6 +37,11 @@ router
     .put('/', editMonitor)
     .delete('/', deleteMonitor)
     .get('/list', listMonitors),
+  )
+  .use('/monitoring', authMiddleware, express.Router()
+    .get('/', getMonitoring)
+    .post('/start', startMonitoring)
+    .post('/stop', stopMonitoring),
   )
 
 export default router

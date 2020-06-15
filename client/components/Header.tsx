@@ -27,9 +27,9 @@ const Header = () => {
           </Link>
         </Logo>
         <Box gap="small" direction="row" align="center">
+          <LoggedUser />
           <SignupButton />
           <LoginButton />
-          <LoggedUser />
         </Box>
       </GrometHeader>
       <Box pad="small" />

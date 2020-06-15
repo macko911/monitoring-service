@@ -10,3 +10,5 @@ export const getMonitors = (state: State) => state.monitors
 
 export const getMonitor = (state: State, id: string) => getMonitors(state)
   .find((monitor) => monitor.id === id)
+
+export const isMonitoring = (state: State) => state.monitoring

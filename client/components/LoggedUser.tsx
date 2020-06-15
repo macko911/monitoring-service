@@ -1,33 +1,40 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import styled from 'styled-components'
+import {Box, Button} from 'grommet'
 
 import {State} from '../store/reducers'
-import {getLoggedUser} from '../store/selectors'
-
-const Wrap = styled.div`
-
-`
+import * as selectors from '../store/selectors'
 
 const shortenEmail = (mail: string) => mail.slice(0, mail.indexOf('@'))
 
-const LoggedUser = ({email, name}) => {
+const LoggedUser = ({
+  user,
+  isMonitoring,
+}) => {
+  const {email, name} = user
   if (!email) {
     return null
   }
   return (
-    <Wrap>
+    <Box gap="small" direction="row" align="center">
       {name || shortenEmail(email)}
-    </Wrap>
+      {/* TODO: move to settings page */}
+      <Button
+        label={isMonitoring ? 'Stop monitoring' : 'Start monitoring'}
+      />
+    </Box>
   )
 }
 
 LoggedUser.propTypes = {
-  name: PropTypes.string,
-  email: PropTypes.string,
+  user: PropTypes.object.isRequired,
+  isMonitoring: PropTypes.bool.isRequired,
 }
 
-const mapStateToProps = (state: State) => getLoggedUser(state)
+const mapStateToProps = (state: State) => ({
+  user: selectors.getLoggedUser(state),
+  isMonitoring: selectors.isMonitoring(state),
+})
 
 export default connect(mapStateToProps)(LoggedUser)

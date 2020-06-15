@@ -1,28 +1,24 @@
-export type UserId = string
-
 export type User = {
-  id: UserId;
+  id?: string;
   email: string;
-  password: string;
+  password?: string;
   name?: string;
   accessToken?: string;
 }
 
-export type MonitoredEndpointId = string
-
 export type MonitoredEndpoint = {
-  id: MonitoredEndpointId;
+  id: string;
   name: string;
   url: string;
   dateCreated: Date | string;
   dateModified: Date | string;
   monitoredIntervalSeconds: number;
-  owner: UserId;
+  owner: User['id'];
 }
 
 export type MonitoringResult = {
   id: string;
-  monitorId: MonitoredEndpointId;
+  monitorId: MonitoredEndpoint['id'];
   dateCreated: Date | string;
   response: Response;
 }
@@ -35,10 +31,4 @@ export type Response = {
 
 export type QueryResponse<T> = {
   data: Array<T>;
-}
-
-export type AuthState = {
-  accessToken: string | null;
-  email: string | null;
-  name?: string | null;
 }

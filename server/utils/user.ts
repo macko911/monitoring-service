@@ -1,7 +1,9 @@
 import {client, q} from './db'
 import {User} from '../../shared/models'
 
-type UserResponse = {
+export type UserResponse = {
+  ref: any;
+  ts: number;
   data: User;
 }
 
@@ -29,7 +31,9 @@ export async function getUserByEmail (email: string): Promise<User | void> {
  * Fetch user from DB according to specified user id.
  * @param email user email
  */
-export async function getUserById (userId: string): Promise<User | void> {
+export async function getUserById (
+  userId: string,
+): Promise<UserResponse | void> {
   try {
     const res = await client.query<UserResponse>(
       q.Get(
@@ -39,7 +43,7 @@ export async function getUserById (userId: string): Promise<User | void> {
         ),
       ),
     )
-    return res.data
+    return res
   } catch (err) {
     console.error(err)
   }

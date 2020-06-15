@@ -10,3 +10,9 @@ export {editMonitor} from './monitor/editMonitor'
 
 export {clearResults} from './results/clearResults'
 export {listResults} from './results/listResults'
+
+export {
+  startMonitoring,
+  stopMonitoring,
+  getMonitoring,
+} from './monitoring'
